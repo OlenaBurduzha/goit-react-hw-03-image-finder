@@ -10,7 +10,7 @@ export default class Modal extends Component{
     }
 
     componentWillUnmount() {
-        window.removeEventListener('keyDown', this.handleKeyDown);
+        window.removeEventListener('keydown', this.handleKeyDown);
     }
    
     handleKeyDown = e => {
@@ -20,7 +20,7 @@ export default class Modal extends Component{
     };
 
     handleBackdropClick = e => {
-        if (e.currentTarget !== e.targert) {
+        if (e.currentTarget === e.target) {
             this.props.onToggleModal();
         }
     };
@@ -28,7 +28,7 @@ export default class Modal extends Component{
     render() {
         const { largeImageURL } = this.props;
         
-        return(
+        return (
             <div className={styles.Overlay} onClick={this.handleBackdropClick}>
                 <div className={styles.Modal}>
                     <img src={largeImageURL} alt="" />
